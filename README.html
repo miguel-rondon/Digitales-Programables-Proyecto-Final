@@ -1,372 +1,270 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>README.md</title>
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-
-<style>
-/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-body {
-	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
-	font-size: var(--vscode-markdown-font-size, 14px);
-	padding: 0 26px;
-	line-height: var(--vscode-markdown-line-height, 22px);
-	word-wrap: break-word;
-}
-
-#code-csp-warning {
-	position: fixed;
-	top: 0;
-	right: 0;
-	color: white;
-	margin: 16px;
-	text-align: center;
-	font-size: 12px;
-	font-family: sans-serif;
-	background-color:#444444;
-	cursor: pointer;
-	padding: 6px;
-	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
-}
-
-#code-csp-warning:hover {
-	text-decoration: none;
-	background-color:#007acc;
-	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
-}
-
-body.scrollBeyondLastLine {
-	margin-bottom: calc(100vh - 22px);
-}
-
-body.showEditorSelection .code-line {
-	position: relative;
-}
-
-body.showEditorSelection .code-active-line:before,
-body.showEditorSelection .code-line:hover:before {
-	content: "";
-	display: block;
-	position: absolute;
-	top: 0;
-	left: -12px;
-	height: 100%;
-}
-
-body.showEditorSelection li.code-active-line:before,
-body.showEditorSelection li.code-line:hover:before {
-	left: -30px;
-}
-
-.vscode-light.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.15);
-}
-
-.vscode-light.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(0, 0, 0, 0.40);
-}
-
-.vscode-light.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-dark.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.4);
-}
-
-.vscode-dark.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 255, 255, 0.60);
-}
-
-.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-.vscode-high-contrast.showEditorSelection .code-active-line:before {
-	border-left: 3px solid rgba(255, 160, 0, 0.7);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line:hover:before {
-	border-left: 3px solid rgba(255, 160, 0, 1);
-}
-
-.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
-	border-left: none;
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-a:focus,
-input:focus,
-select:focus,
-textarea:focus {
-	outline: 1px solid -webkit-focus-ring-color;
-	outline-offset: -1px;
-}
-
-hr {
-	border: 0;
-	height: 2px;
-	border-bottom: 2px solid;
-}
-
-h1 {
-	padding-bottom: 0.3em;
-	line-height: 1.2;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
-
-h1, h2, h3 {
-	font-weight: normal;
-}
-
-table {
-	border-collapse: collapse;
-}
-
-table > thead > tr > th {
-	text-align: left;
-	border-bottom: 1px solid;
-}
-
-table > thead > tr > th,
-table > thead > tr > td,
-table > tbody > tr > th,
-table > tbody > tr > td {
-	padding: 5px 10px;
-}
-
-table > tbody > tr + tr > td {
-	border-top: 1px solid;
-}
-
-blockquote {
-	margin: 0 7px 0 5px;
-	padding: 0 16px 0 10px;
-	border-left-width: 5px;
-	border-left-style: solid;
-}
-
-code {
-	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
-	font-size: 1em;
-	line-height: 1.357em;
-}
-
-body.wordWrap pre {
-	white-space: pre-wrap;
-}
-
-pre:not(.hljs),
-pre.hljs code > div {
-	padding: 16px;
-	border-radius: 3px;
-	overflow: auto;
-}
-
-pre code {
-	color: var(--vscode-editor-foreground);
-	tab-size: 4;
-}
-
-/** Theming */
-
-.vscode-light pre {
-	background-color: rgba(220, 220, 220, 0.4);
-}
-
-.vscode-dark pre {
-	background-color: rgba(10, 10, 10, 0.4);
-}
-
-.vscode-high-contrast pre {
-	background-color: rgb(0, 0, 0);
-}
-
-.vscode-high-contrast h1 {
-	border-color: rgb(0, 0, 0);
-}
-
-.vscode-light table > thead > tr > th {
-	border-color: rgba(0, 0, 0, 0.69);
-}
-
-.vscode-dark table > thead > tr > th {
-	border-color: rgba(255, 255, 255, 0.69);
-}
-
-.vscode-light h1,
-.vscode-light hr,
-.vscode-light table > tbody > tr + tr > td {
-	border-color: rgba(0, 0, 0, 0.18);
-}
-
-.vscode-dark h1,
-.vscode-dark hr,
-.vscode-dark table > tbody > tr + tr > td {
-	border-color: rgba(255, 255, 255, 0.18);
-}
-
-</style>
-
-<style>
-/* Tomorrow Theme */
-/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
-/* Original theme - https://github.com/chriskempson/tomorrow-theme */
-
-/* Tomorrow Comment */
-.hljs-comment,
-.hljs-quote {
-	color: #8e908c;
-}
-
-/* Tomorrow Red */
-.hljs-variable,
-.hljs-template-variable,
-.hljs-tag,
-.hljs-name,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-regexp,
-.hljs-deletion {
-	color: #c82829;
-}
-
-/* Tomorrow Orange */
-.hljs-number,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-literal,
-.hljs-type,
-.hljs-params,
-.hljs-meta,
-.hljs-link {
-	color: #f5871f;
-}
-
-/* Tomorrow Yellow */
-.hljs-attribute {
-	color: #eab700;
-}
-
-/* Tomorrow Green */
-.hljs-string,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-addition {
-	color: #718c00;
-}
-
-/* Tomorrow Blue */
-.hljs-title,
-.hljs-section {
-	color: #4271ae;
-}
-
-/* Tomorrow Purple */
-.hljs-keyword,
-.hljs-selector-tag {
-	color: #8959a8;
-}
-
-.hljs {
-	display: block;
-	overflow-x: auto;
-	color: #4d4d4c;
-	padding: 0.5em;
-}
-
-.hljs-emphasis {
-	font-style: italic;
-}
-
-.hljs-strong {
-	font-weight: bold;
-}
-</style>
-
-<style>
-/*
- * Markdown PDF CSS
+<!DOCTYPE html><html><head>
+      <title>README</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\stevi\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.1\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      <script type="text/javascript" src="file:///c:\Users\stevi\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.1\node_modules\@shd101wyy\mume\dependencies\mermaid\mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
  */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
 
- body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
-	padding: 0 12px;
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
-pre {
-	background-color: #f8f8f8;
-	border: 1px solid #cccccc;
-	border-radius: 3px;
-	overflow-x: auto;
-	white-space: pre-wrap;
-	overflow-wrap: break-word;
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
 }
 
-pre:not(.hljs) {
-	padding: 23px;
-	line-height: 19px;
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
 }
 
-blockquote {
-	background: rgba(127, 127, 127, 0.1);
-	border-color: rgba(0, 122, 204, 0.5);
+.token.comment,
+.token.blockquote {
+  color: #969896;
 }
 
-.emoji {
-	height: 1.4em;
+.token.cdata {
+  color: #183691;
 }
 
-code {
-	font-size: 14px;
-	line-height: 19px;
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
 }
 
-/* for inline code */
-:not(pre):not(.hljs) > code {
-	color: #C9AE75; /* Change the old color so it seems less like an error */
-	font-size: inherit;
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
 }
 
-/* Page Break : use <div class="page"/> to insert page break
--------------------------------------------------------- */
-.page {
-	page-break-after: always;
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
 }
 
-</style>
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
 
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-</head>
-<body>
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
-          ? 'dark'
-          : 'default'
-    });
-  </script>
-<h1 id="primer-avance-sistemas-digitales-programables-universidad-autonoma-de-occidente-2021">Primer avance. Sistemas digitales programables. Universidad Autonoma de Occidente. 2021.</h1>
-<h2 id="an%C3%A1lisis-de-la-entradas-y-salidas-del-sistema">Análisis de la entradas y salidas del sistema.</h2>
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="primer-avance-sistemas-digitales-programables-universidad-autonoma-de-occidente-2021">Primer avance. Sistemas digitales programables. Universidad Autonoma de Occidente. 2021.</h1>
+
+<h2 class="mume-header" id="an%C3%A1lisis-de-la-entradas-y-salidas-del-sistema">An&#xE1;lisis de la entradas y salidas del sistema.</h2>
+
 <table>
 <thead>
 <tr>
@@ -393,10 +291,13 @@ code {
 </tr>
 </tbody>
 </table>
-<h2 id="diagrama-de-bloques">Diagrama de Bloques.</h2>
+<h2 class="mume-header" id="diagrama-de-bloques">Diagrama de Bloques.</h2>
+
 <p><img src="./Fotos/dg_bloques.jpeg" alt="Foto"></p>
-<h2 id="seudoc%C3%B3digo-de-la-funci%C3%B3n-principal-y-de-funciones-intermedias-que-fueron-necesario-construir">Seudocódigo de la Función Principal y de Funciones intermedias que fueron necesario construir.</h2>
-<h3 id="seudoc%C3%B3digo-de-funcion-principal">Seudocódigo de funcion Principal</h3>
+<h2 class="mume-header" id="seudoc%C3%B3digo-de-la-funci%C3%B3n-principal-y-de-funciones-intermedias-que-fueron-necesario-construir">Seudoc&#xF3;digo de la Funci&#xF3;n Principal y de Funciones intermedias que fueron necesario construir.</h2>
+
+<h3 class="mume-header" id="seudoc%C3%B3digo-de-funcion-principal">Seudoc&#xF3;digo de funcion Principal</h3>
+
 <table>
 <thead>
 <tr>
@@ -424,7 +325,7 @@ code {
 </tbody>
 </table>
 <p>Entidad</p>
-<pre class="hljs"><code><div>LIBRARY ieee;
+<pre data-role="codeBlock" data-info="vhd" class="language-vhd"><code>LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
@@ -437,9 +338,8 @@ ENTITY PRINCIPAL IS
     alarma : BIT;
   );
 END ENTITY;
-</div></code></pre>
-<p>Posible codificación</p>
-<pre class="hljs"><code><div>ARCHITECTURE  OF PRINCIPAL IS
+</code></pre><p>Posible codificaci&#xF3;n</p>
+<pre data-role="codeBlock" data-info="vhd" class="language-vhd"><code>ARCHITECTURE  OF PRINCIPAL IS
     VARIABLE EficienciaLuminica, CambiarReferencia, Equivalencia : BIT;
     VARIABLE EficienciaLuminosa, watt : STD_LOGIC_VECTOR;
     VARIABLE TecladoCount, N : INTEGER;
@@ -450,7 +350,7 @@ END ENTITY;
     --CambiarReferencia es la activacion de la letra A
     process (CambiarReferencia, columna, clk_1Hz)
         IF (CambiarReferencia == 1 &amp;&amp; TecladoCount &lt;3) THEN
-            IF (clk_1Hz 'Event And clk_1Hz = '1') THEN
+            IF (clk_1Hz &apos;Event And clk_1Hz = &apos;1&apos;) THEN
                 TecladoCount := TecladoCount + 1;
                 N := 3-TecladoCount;
                 NuevaReferencia(N) := funcion(tecla);
@@ -463,17 +363,17 @@ END ENTITY;
 
     EficienciaLuminica:
     --EficienciaLuminica es la activacion de la letra B
-    IF(EficienciaLuminica == '1') THEN
-        EficienciaLuminosa := '1011010' --Led
+    IF(EficienciaLuminica == &apos;1&apos;) THEN
+        EficienciaLuminosa := &apos;1011010&apos; --Led
     ELSE
-        EficienciaLuminosa := '10100' --Halógena
+        EficienciaLuminosa := &apos;10100&apos; --Hal&#xF3;gena
     END IF;
 
     Equivalente: CalcularWatt port map (dlux,EficienciaLuminosa, watt)
 
     Mostrar:
     process (Equivalencia, watt)
-        IF (Equivalencia == '1') THEN
+        IF (Equivalencia == &apos;1&apos;) THEN
             medida &lt;= dlux;
         ELSE
             medida &lt;= watt;
@@ -483,15 +383,15 @@ END ENTITY;
     Alarmar:
     process (dlux)
         IF (dlux &gt;= referencia) THEN
-            alarma &lt;= '1';
+            alarma &lt;= &apos;1&apos;;
         ELSE
-            alarma &lt;= '0';
+            alarma &lt;= &apos;0&apos;;
         END IF
     end process Alarmar;
 
 END original;
-</div></code></pre>
-<h3 id="seudoc%C3%B3digo-de-funcion-adc">Seudocódigo de funcion ADC</h3>
+</code></pre><h3 class="mume-header" id="seudoc%C3%B3digo-de-funcion-adc">Seudoc&#xF3;digo de funcion ADC</h3>
+
 <p>Relacion de datos iniciales</p>
 <table>
 <thead>
@@ -508,7 +408,7 @@ END original;
 </tbody>
 </table>
 <p>Entidad</p>
-<pre class="hljs"><code><div>LIBRARY ieee;
+<pre data-role="codeBlock" data-info="vhd" class="language-vhd"><code>LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
@@ -518,9 +418,8 @@ ENTITY ADC_8_bit IS
     digital_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
   );
 END ENTITY;
-</div></code></pre>
-<p>Posible codificación</p>
-<pre class="hljs"><code><div>ARCHITECTURE original OF ADC_8_bit IS
+</code></pre><p>Posible codificaci&#xF3;n</p>
+<pre data-role="codeBlock" data-info="vhd" class="language-vhd"><code>ARCHITECTURE original OF ADC_8_bit IS
 
   CONSTANT conversion_time : TIME := 25 ns; -- Muestreo
 
@@ -552,15 +451,15 @@ END ENTITY;
       END IF;
     END IF;
 
-    digital_out := STD_LOGIC_VECTOR(to_signed(digitized_signal, digital_out'length));
+    digital_out := STD_LOGIC_VECTOR(to_signed(digitized_signal, digital_out&apos;length));
     RETURN digital_out;
   END ADC_8b_10v_bipolar;
 
 BEGIN
 
 END original;
-</div></code></pre>
-<h3 id="seudoc%C3%B3digo-de-funcion-teclado">Seudocódigo de funcion Teclado</h3>
+</code></pre><h3 class="mume-header" id="seudoc%C3%B3digo-de-funcion-teclado">Seudoc&#xF3;digo de funcion Teclado</h3>
+
 <table>
 <thead>
 <tr>
@@ -654,9 +553,8 @@ END original;
 </tr>
 </tbody>
 </table>
-<p>Posible codificación</p>
-<pre class="hljs"><code><div>
-library IEEE;
+<p>Posible codificaci&#xF3;n</p>
+<pre data-role="codeBlock" data-info="vhd" class="language-vhd"><code>library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 entity TECLADO_MATRICIAL is
@@ -677,14 +575,14 @@ architecture Behavioral of TECLADO_MATRICIAL is
 	CONSTANT DELAY_10MS : INTEGER := 499999; -- (FREQ_CLK/100)-1
 
 	SIGNAL CONTA_1MS 	: INTEGER RANGE 0 TO DELAY_1MS := 0;
-	SIGNAL BANDERA 	: STD_LOGIC := '0';
+	SIGNAL BANDERA 	: STD_LOGIC := &apos;0&apos;;
 	SIGNAL CONTA_10MS : INTEGER RANGE 0 TO DELAY_10MS := 0;
-	SIGNAL BANDERA2 	: STD_LOGIC := '0';
+	SIGNAL BANDERA2 	: STD_LOGIC := &apos;0&apos;;
 
-	SIGNAL FILA_REG_S : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS=&gt;'0');
+	SIGNAL FILA_REG_S : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS=&gt;&apos;0&apos;);
 	SIGNAL FILA : INTEGER RANGE 1 TO 4 := 1;
 
-	SIGNAL IND_S : STD_LOGIC := '0';
+	SIGNAL IND_S : STD_LOGIC := &apos;0&apos;;
 	SIGNAL EDO : INTEGER RANGE 0 TO 1 := 0;
 
 begin
@@ -696,10 +594,10 @@ PROCESS(CLK)
 BEGIN
 IF RISING_EDGE(CLK) THEN
 	CONTA_1MS &lt;= CONTA_1MS+1;
-	BANDERA &lt;= '0';
+	BANDERA &lt;= &apos;0&apos;;
 	IF CONTA_1MS = DELAY_1MS THEN
 		CONTA_1MS &lt;= 0;
-		BANDERA &lt;= '1';
+		BANDERA &lt;= &apos;1&apos;;
 	END IF;
 END IF;
 END PROCESS;
@@ -710,10 +608,10 @@ PROCESS(CLK)
 BEGIN
 IF RISING_EDGE(CLK) THEN
 	CONTA_10MS &lt;= CONTA_10MS+1;
-	BANDERA2 &lt;= '0';
+	BANDERA2 &lt;= &apos;0&apos;;
 	IF CONTA_10MS = DELAY_10MS THEN
 		CONTA_10MS &lt;= 0;
-		BANDERA2 &lt;= '1';
+		BANDERA2 &lt;= &apos;1&apos;;
 	END IF;
 END IF;
 END PROCESS;
@@ -722,7 +620,7 @@ END PROCESS;
 --PROCESO QUE ACTIVA CADA FILA CADA 10ms--
 PROCESS(CLK, BANDERA2)
 BEGIN
-	IF RISING_EDGE(CLK) AND BANDERA2 = '1' THEN
+	IF RISING_EDGE(CLK) AND BANDERA2 = &apos;1&apos; THEN
 		FILA &lt;= FILA+1;
 		IF FILA = 4 THEN
 			FILA &lt;= 1;
@@ -740,35 +638,35 @@ WITH FILA SELECT
 
 PROCESS(CLK,BANDERA)
 
-IF RISING_EDGE(CLK) AND BANDERA = '1' THEN
+IF RISING_EDGE(CLK) AND BANDERA = &apos;1&apos; THEN
 		IF FILA_REG_S = &quot;1000&quot; THEN --PRIMERA FILA DE BOTONES
-			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;1&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;2&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;3&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;A&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;1&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;2&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;3&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;A&quot;; IND_S &lt;= &apos;1&apos;; end if;
 		ELSIF FILA_REG_S = &quot;0100&quot; THEN --SEGUNDA FILA DE BOTONES
-			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;4&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;5&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;6&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;B&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;4&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;5&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;6&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;B&quot;; IND_S &lt;= &apos;1&apos;; end if;
 		ELSIF FILA_REG_S = &quot;0010&quot; THEN --TERCERA FILA DE BOTONES
-			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;7&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;8&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;9&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;C&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;7&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;8&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;9&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;C&quot;; IND_S &lt;= &apos;1&apos;; end if;
 		ELSIF FILA_REG_S = &quot;0001&quot; THEN --CUARTA FILA DE BOTONES
-			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;E&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;0&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;F&quot;; IND_S &lt;= '1'; end if;
-			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;D&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;E&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;0&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;F&quot;; IND_S &lt;= &apos;1&apos;; end if;
+			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;D&quot;; IND_S &lt;= &apos;1&apos;; end if;
 		END IF;
 	END IF;
 
 END PROCESS;
 
 end Behavioral;
-</div></code></pre>
-<h3 id="seudoc%C3%B3digo-de-funcion-calcularwatt">Seudocódigo de funcion CalcularWatt</h3>
+</code></pre><h3 class="mume-header" id="seudoc%C3%B3digo-de-funcion-calcularwatt">Seudoc&#xF3;digo de funcion CalcularWatt</h3>
+
 <table>
 <thead>
 <tr>
@@ -789,92 +687,94 @@ end Behavioral;
 </table>
 <hr>
 <p><img src="./Fotos/CW_2.png" alt="Foto"></p>
-<h2 id="cartas-asm-de-la-funci%C3%B3n-principal-y-de-funciones-intermedias">Cartas ASM de la Función Principal y de Funciones intermedias</h2>
-<h3 id="carta-asm-funcion-principal">Carta ASM Funcion Principal</h3>
-<pre><code class="language-mermaid"><div class="mermaid">graph TB
+<h2 class="mume-header" id="cartas-asm-de-la-funci%C3%B3n-principal-y-de-funciones-intermedias">Cartas ASM de la Funci&#xF3;n Principal y de Funciones intermedias</h2>
+
+<h3 class="mume-header" id="carta-asm-funcion-principal">Carta ASM Funcion Principal</h3>
+
+<div class="mermaid">graph TB
     subgraph Principal
         *((Inicio))
-        *--Datos por defecto-->DF
+        *--Datos por defecto--&gt;DF
 
-        DF(equivalente = 0 <br/> lux = 0 <br/> efl = 0 )
+        DF(equivalente = 0 &lt;br/&gt; lux = 0 &lt;br/&gt; efl = 0 )
 
-        DF-->CLK
+        DF--&gt;CLK
 
         CLK{{clk}}
 
-        CLK--Recibir datos-->data
+        CLK--Recibir datos--&gt;data
 
-        data[/lux<br>columna/]
+        data[/lux&lt;br&gt;columna/]
 
         subgraph Funcion ADC, Teclado
             CLK
             data
         end
 
-        data-->C
-        data-->Ref
-        data-->EfL
+        data--&gt;C
+        data--&gt;Ref
+        data--&gt;EfL
 
-        C{Mostrar <br> medida <br> equivalente <br> <br> eq=1}
+        C{Mostrar &lt;br&gt; medida &lt;br&gt; equivalente &lt;br&gt; &lt;br&gt; eq=1}
 
 
-        C -->|Si| D[Medida en Watt]
+        C --&gt;|Si| D[Medida en Watt]
 
-        C -->|No| E[Medida en Lux]
+        C --&gt;|No| E[Medida en Lux]
 
         subgraph Funcion Calcular Watt
         D
         end
 
-        D --> #
-        E --> #
+        D --&gt; #
+        E --&gt; #
 
-        Ref{Cambiar referencia <br> ref=1}
+        Ref{Cambiar referencia &lt;br&gt; ref=1}
 
-        Ref-->|Si| DPB
+        Ref--&gt;|Si| DPB
 
-        DPB[display en simbolo <br/> -]
+        DPB[display en simbolo &lt;br/&gt; -]
 
-        DPB --> NRf
+        DPB --&gt; NRf
         NRf[Nueva referencia]
 
-        NRf-->#
+        NRf--&gt;#
 
-        Ref-->|No| #
+        Ref--&gt;|No| #
 
-        EfL{Eficiencia luminosa <br/> efl=1}
+        EfL{Eficiencia luminosa &lt;br/&gt; efl=1}
 
-        EfL -->|Si| F[Para <br/> luz led]
-        EfL -->|No| G[Para <br/> luz Halógena]
+        EfL --&gt;|Si| F[Para &lt;br/&gt; luz led]
+        EfL --&gt;|No| G[Para &lt;br/&gt; luz Hal&#xF3;gena]
 
-        F-->#
-        G-->#
+        F--&gt;#
+        G--&gt;#
 
         #((FIN))
 
     end
-</div></code></pre>
-<h3 id="cartas-asm-funcion-adc">Cartas ASM Funcion ADC</h3>
-<pre><code class="language-mermaid"><div class="mermaid">graph TB
+</div><h3 class="mume-header" id="cartas-asm-funcion-adc">Cartas ASM Funcion ADC</h3>
+
+<div class="mermaid">graph TB
     subgraph ADC
         *((Inicio))
         #((FIN))
-        SA[/Señal analoga/]
-        analog_signal{Señal analoga < 0}
+        SA[/Se&#xF1;al analoga/]
+        analog_signal{Se&#xF1;al analoga &lt; 0}
         CSTDL[Convesor a STD Logic]
 
-        * --Recibir dato--> SA
-        SA --> analog_signal
-        analog_signal -- Si --> SD1[Señal digital = Señal analoga * 12.8]
-        analog_signal -- No --> SD2[Señal digital = Señal analoga * 12.8]
-        SD1 --> CA1[Complemento A1]
-        SD2 --> CSTDL
-        CA1 --> CSTDL
-        CSTDL --> #
+        * --Recibir dato--&gt; SA
+        SA --&gt; analog_signal
+        analog_signal -- Si --&gt; SD1[Se&#xF1;al digital = Se&#xF1;al analoga * 12.8]
+        analog_signal -- No --&gt; SD2[Se&#xF1;al digital = Se&#xF1;al analoga * 12.8]
+        SD1 --&gt; CA1[Complemento A1]
+        SD2 --&gt; CSTDL
+        CA1 --&gt; CSTDL
+        CSTDL --&gt; #
 
     end
-</div></code></pre>
-<h3 id="cartas-asm-funcion-teclado">Cartas ASM Funcion Teclado</h3>
+</div><h3 class="mume-header" id="cartas-asm-funcion-teclado">Cartas ASM Funcion Teclado</h3>
+
 <p>Diagrama para Bandera</p>
 <p><img src="./Fotos/TC_1.png" alt="Foto"></p>
 <p>Diagrama para Bandera 2</p>
@@ -887,9 +787,91 @@ end Behavioral;
 <p><img src="./Fotos/TC_5.png" alt="Foto"></p>
 <p>Diagrama para salida.</p>
 <p><img src="./Fotos/TC_6.png" alt="Foto"></p>
-<h3 id="cartas-asm-funcion-calcularwatt">Cartas ASM Funcion CalcularWatt</h3>
-<p><img src="./Fotos/CW_1.png" alt="Foto">
+<h3 class="mume-header" id="cartas-asm-funcion-calcularwatt">Cartas ASM Funcion CalcularWatt</h3>
+
+<p><img src="./Fotos/CW_1.png" alt="Foto"><br>
 <img src="./Fotos/CW_3.png" alt="Foto"></p>
 
-</body>
-</html>
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#primer-avance-sistemas-digitales-programables-universidad-autonoma-de-occidente-2021">Primer avance. Sistemas digitales programables. Universidad Autonoma de Occidente. 2021.</a>
+<ul>
+<li><a href="#an%C3%A1lisis-de-la-entradas-y-salidas-del-sistema">An&#xE1;lisis de la entradas y salidas del sistema.</a></li>
+<li><a href="#diagrama-de-bloques">Diagrama de Bloques.</a></li>
+<li><a href="#seudoc%C3%B3digo-de-la-funci%C3%B3n-principal-y-de-funciones-intermedias-que-fueron-necesario-construir">Seudoc&#xF3;digo de la Funci&#xF3;n Principal y de Funciones intermedias que fueron necesario construir.</a>
+<ul>
+<li><a href="#seudoc%C3%B3digo-de-funcion-principal">Seudoc&#xF3;digo de funcion Principal</a></li>
+<li><a href="#seudoc%C3%B3digo-de-funcion-adc">Seudoc&#xF3;digo de funcion ADC</a></li>
+<li><a href="#seudoc%C3%B3digo-de-funcion-teclado">Seudoc&#xF3;digo de funcion Teclado</a></li>
+<li><a href="#seudoc%C3%B3digo-de-funcion-calcularwatt">Seudoc&#xF3;digo de funcion CalcularWatt</a></li>
+</ul>
+</li>
+<li><a href="#cartas-asm-de-la-funci%C3%B3n-principal-y-de-funciones-intermedias">Cartas ASM de la Funci&#xF3;n Principal y de Funciones intermedias</a>
+<ul>
+<li><a href="#carta-asm-funcion-principal">Carta ASM Funcion Principal</a></li>
+<li><a href="#cartas-asm-funcion-adc">Cartas ASM Funcion ADC</a></li>
+<li><a href="#cartas-asm-funcion-teclado">Cartas ASM Funcion Teclado</a></li>
+<li><a href="#cartas-asm-funcion-calcularwatt">Cartas ASM Funcion CalcularWatt</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">&#x2261;</a>
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </body></html>
