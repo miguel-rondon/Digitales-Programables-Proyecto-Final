@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="primer-avance-sistemas-digitales-programables-universidad-autonoma-de-occidente-2021">Primer avance. Sistemas digitales programables. Universidad Autonoma de Occidente. 2021.</h1>
+<h2 id="an%C3%A1lisis-de-la-entradas-y-salidas-del-sistema">Análisis de la entradas y salidas del sistema.</h2>
+<table>
+<thead>
+<tr>
+<th>Entradas</th>
+<th>Salidas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ClK</td>
+<td>MEDIDA (Lx,W)</td>
+</tr>
+<tr>
+<td>RESET</td>
+<td>ALARMA</td>
+</tr>
+<tr>
+<td>LUX</td>
+<td>REFERENCIA</td>
+</tr>
+<tr>
+<td>COLUMNA</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagrama-de-bloques">Diagrama de Bloques.</h2>
+<p><img src="./Fotos/dg_bloques.jpeg" alt="Foto"></p>
+<h2 id="seudoc%C3%B3digo-de-la-funci%C3%B3n-principal-y-de-funciones-intermedias-que-fueron-necesario-construir">Seudocódigo de la Función Principal y de Funciones intermedias que fueron necesario construir.</h2>
+<h3 id="seudoc%C3%B3digo-de-funcion-principal">Seudocódigo de funcion Principal</h3>
+<table>
+<thead>
+<tr>
+<th>Entradas</th>
+<th>Salidas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ClK</td>
+<td>MEDIDA (Lx,W)</td>
+</tr>
+<tr>
+<td>RESET</td>
+<td>ALARMA</td>
+</tr>
+<tr>
+<td>LUX</td>
+<td>REFERENCIA (Lx)</td>
+</tr>
+<tr>
+<td>COLUMNA</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Entidad</p>
+<pre class="hljs"><code><div>LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY PRINCIPAL IS
+  PORT (
+    clk, reset: STD_LOGIC_VECTOR
+    lux : IN real RANGE NVDC TO PVDC;
+    columna : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+    medida, referencia : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+    alarma : BIT;
+  );
+END ENTITY;
+</div></code></pre>
+<p>Posible codificación</p>
+<pre class="hljs"><code><div>ARCHITECTURE  OF PRINCIPAL IS
+    VARIABLE EficienciaLuminica, CambiarReferencia, Equivalencia : BIT;
+    VARIABLE EficienciaLuminosa, watt : STD_LOGIC_VECTOR;
+    VARIABLE TecladoCount, N : INTEGER;
+
+    ADC := ConversorADC real(lux, dlux);
+
+    Referencia:
+    --CambiarReferencia es la activacion de la letra A
+    process (CambiarReferencia, columna, clk_1Hz)
+        IF (CambiarReferencia == 1 &amp;&amp; TecladoCount &lt;3) THEN
+            IF (clk_1Hz 'Event And clk_1Hz = '1') THEN
+                TecladoCount := TecladoCount + 1;
+                N := 3-TecladoCount;
+                NuevaReferencia(N) := funcion(tecla);
+            END IF;
+        ELSE
+            CambiarReferencia := 0;
+            TecladoCount := 0;
+        END IF;
+    end process Referencia;
+
+    EficienciaLuminica:
+    --EficienciaLuminica es la activacion de la letra B
+    IF(EficienciaLuminica == '1') THEN
+        EficienciaLuminosa := '1011010' --Led
+    ELSE
+        EficienciaLuminosa := '10100' --Halógena
+    END IF;
+
+    Equivalente: CalcularWatt port map (dlux,EficienciaLuminosa, watt)
+
+    Mostrar:
+    process (Equivalencia, watt)
+        IF (Equivalencia == '1') THEN
+            medida &lt;= dlux;
+        ELSE
+            medida &lt;= watt;
+        END IF
+    end process Mostrar;
+
+    Alarmar:
+    process (dlux)
+        IF (dlux &gt;= referencia) THEN
+            alarma &lt;= '1';
+        ELSE
+            alarma &lt;= '0';
+        END IF
+    end process Alarmar;
+
+END original;
+</div></code></pre>
+<h3 id="seudoc%C3%B3digo-de-funcion-adc">Seudocódigo de funcion ADC</h3>
+<p>Relacion de datos iniciales</p>
+<table>
+<thead>
+<tr>
+<th>Entradas</th>
+<th>Salidas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Analogico</td>
+<td>Digital</td>
+</tr>
+</tbody>
+</table>
+<p>Entidad</p>
+<pre class="hljs"><code><div>LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+
+ENTITY ADC_8_bit IS
+  PORT (
+    analog_in : IN real RANGE NVDC TO PVDC;
+    digital_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+  );
+END ENTITY;
+</div></code></pre>
+<p>Posible codificación</p>
+<pre class="hljs"><code><div>ARCHITECTURE original OF ADC_8_bit IS
+
+  CONSTANT conversion_time : TIME := 25 ns; -- Muestreo
+
+  -- Estados
+  SIGNAL instantly_digitized_signal : STD_LOGIC_VECTOR(7 DOWNTO 0);
+  SIGNAL delayed_digitized_signal : STD_LOGIC_VECTOR(7 DOWNTO 0);
+
+  -- Funcion de conversion
+
+  FUNCTION ADC_8b_10v_bipolar (
+    analog_in : real RANGE NVDC TO PVDC
+  ) RETURN STD_LOGIC_VECTOR IS
+    CONSTANT max_abs_digital_value : INTEGER := 128;
+    VARIABLE analog_signal : real;
+    VARIABLE digitized_signal : INTEGER;
+    VARIABLE digital_out : STD_LOGIC_VECTOR(7 DOWNTO 0);
+  BEGIN
+    analog_signal := real(analog_in);
+
+    IF (analog_signal &lt; 0.0) THEN -- i/p = -ve
+      digitized_signal := INTEGER(analog_signal * 12.8); - escalamos
+      IF (digitized_signal &lt;- (max_abs_digital_value)) THEN
+        digitized_signal := - (max_abs_digital_value);
+      END IF;
+    ELSE -- i/p = +ve
+      digitized_signal := INTEGER(analog_signal * 12.8); - escalamos
+      IF (digitized_signal &gt; (max_abs_digital_value - 1)) THEN
+        digitized_signal := max_abs_digital_value - 1; -- Complemento A1
+      END IF;
+    END IF;
+
+    digital_out := STD_LOGIC_VECTOR(to_signed(digitized_signal, digital_out'length));
+    RETURN digital_out;
+  END ADC_8b_10v_bipolar;
+
+BEGIN
+
+END original;
+</div></code></pre>
+<h3 id="seudoc%C3%B3digo-de-funcion-teclado">Seudocódigo de funcion Teclado</h3>
+<table>
+<thead>
+<tr>
+<th>Entradas</th>
+<th>Salidas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Columnas</td>
+<td>Digito</td>
+</tr>
+<tr>
+<td>Filas</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Tabla de funcionamiento</p>
+<table>
+<thead>
+<tr>
+<th>TECLA PRESIONADA</th>
+<th>TECLA_PRES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>x&quot;0&quot;</td>
+</tr>
+<tr>
+<td>1</td>
+<td>x&quot;1&quot;</td>
+</tr>
+<tr>
+<td>2</td>
+<td>x&quot;2&quot;</td>
+</tr>
+<tr>
+<td>3</td>
+<td>x&quot;3&quot;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>x&quot;4&quot;</td>
+</tr>
+<tr>
+<td>5</td>
+<td>x&quot;5&quot;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>x&quot;6&quot;</td>
+</tr>
+<tr>
+<td>7</td>
+<td>x&quot;7&quot;</td>
+</tr>
+<tr>
+<td>8</td>
+<td>x&quot;8&quot;</td>
+</tr>
+<tr>
+<td>9</td>
+<td>x&quot;9&quot;</td>
+</tr>
+<tr>
+<td>A</td>
+<td>x&quot;A&quot;</td>
+</tr>
+<tr>
+<td>B</td>
+<td>x&quot;B&quot;</td>
+</tr>
+<tr>
+<td>C</td>
+<td>x&quot;C&quot;</td>
+</tr>
+<tr>
+<td>D</td>
+<td>x&quot;D&quot;</td>
+</tr>
+<tr>
+<td>*</td>
+<td>x&quot;E&quot;</td>
+</tr>
+<tr>
+<td>#</td>
+<td>x&quot;F&quot;</td>
+</tr>
+</tbody>
+</table>
+<p>Posible codificación</p>
+<pre class="hljs"><code><div>
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity TECLADO_MATRICIAL is
+
+	PORT(
+	CLK 		  : IN  STD_LOGIC; 						  --RELOJ FPGA
+	COLUMNAS   : IN  STD_LOGIC_VECTOR(3 DOWNTO 0); --PUERTO CONECTADO A LAS COLUMNAS DEL TECLADO
+	FILAS 	  : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); --PUERTO CONECTADO A LA FILAS DEL TECLADO
+	BOTON_PRES : OUT STD_LOGIC_VECTOR(3 DOWNTO 0); --PUERTO QUE INDICA LA TECLA QUE SE PRESIONA
+	IND		  : OUT STD_LOGIC							  --BANDERA QUE INDICA CUANDO SE PRESIONA UNA TECLA (SOLO DURA UN CICLO DE RELOJ)
+   );
+
+end TECLADO_MATRICIAL;
+
+architecture Behavioral of TECLADO_MATRICIAL is
+
+	CONSTANT DELAY_1MS  : INTEGER := 49999; --(FREQ_CLK/1000)-1
+	CONSTANT DELAY_10MS : INTEGER := 499999; -- (FREQ_CLK/100)-1
+
+	SIGNAL CONTA_1MS 	: INTEGER RANGE 0 TO DELAY_1MS := 0;
+	SIGNAL BANDERA 	: STD_LOGIC := '0';
+	SIGNAL CONTA_10MS : INTEGER RANGE 0 TO DELAY_10MS := 0;
+	SIGNAL BANDERA2 	: STD_LOGIC := '0';
+
+	SIGNAL FILA_REG_S : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS=&gt;'0');
+	SIGNAL FILA : INTEGER RANGE 1 TO 4 := 1;
+
+	SIGNAL IND_S : STD_LOGIC := '0';
+	SIGNAL EDO : INTEGER RANGE 0 TO 1 := 0;
+
+begin
+
+	FILAS &lt;= FILA_REG_S;
+
+--RETARDO 1 MS--
+PROCESS(CLK)
+BEGIN
+IF RISING_EDGE(CLK) THEN
+	CONTA_1MS &lt;= CONTA_1MS+1;
+	BANDERA &lt;= '0';
+	IF CONTA_1MS = DELAY_1MS THEN
+		CONTA_1MS &lt;= 0;
+		BANDERA &lt;= '1';
+	END IF;
+END IF;
+END PROCESS;
+----------------
+
+--RETARDO 10 MS--
+PROCESS(CLK)
+BEGIN
+IF RISING_EDGE(CLK) THEN
+	CONTA_10MS &lt;= CONTA_10MS+1;
+	BANDERA2 &lt;= '0';
+	IF CONTA_10MS = DELAY_10MS THEN
+		CONTA_10MS &lt;= 0;
+		BANDERA2 &lt;= '1';
+	END IF;
+END IF;
+END PROCESS;
+----------------
+
+--PROCESO QUE ACTIVA CADA FILA CADA 10ms--
+PROCESS(CLK, BANDERA2)
+BEGIN
+	IF RISING_EDGE(CLK) AND BANDERA2 = '1' THEN
+		FILA &lt;= FILA+1;
+		IF FILA = 4 THEN
+			FILA &lt;= 1;
+		END IF;
+	END IF;
+END PROCESS;
+
+WITH FILA SELECT
+	FILA_REG_S &lt;= &quot;1000&quot; WHEN 1,
+					  &quot;0100&quot; WHEN 2,
+					  &quot;0010&quot; WHEN 3,
+					  &quot;0001&quot; WHEN OTHERS;
+-------------------------------
+
+
+PROCESS(CLK,BANDERA)
+
+IF RISING_EDGE(CLK) AND BANDERA = '1' THEN
+		IF FILA_REG_S = &quot;1000&quot; THEN --PRIMERA FILA DE BOTONES
+			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;1&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;2&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;3&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;A&quot;; IND_S &lt;= '1'; end if;
+		ELSIF FILA_REG_S = &quot;0100&quot; THEN --SEGUNDA FILA DE BOTONES
+			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;4&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;5&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;6&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;B&quot;; IND_S &lt;= '1'; end if;
+		ELSIF FILA_REG_S = &quot;0010&quot; THEN --TERCERA FILA DE BOTONES
+			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;7&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;8&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;9&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;C&quot;; IND_S &lt;= '1'; end if;
+		ELSIF FILA_REG_S = &quot;0001&quot; THEN --CUARTA FILA DE BOTONES
+			if columnas = &quot;1000&quot; then BOTON_PRES &lt;= X&quot;E&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0100&quot; then BOTON_PRES &lt;= X&quot;0&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0010&quot; then BOTON_PRES &lt;= X&quot;F&quot;; IND_S &lt;= '1'; end if;
+			if columnas = &quot;0001&quot; then BOTON_PRES &lt;= X&quot;D&quot;; IND_S &lt;= '1'; end if;
+		END IF;
+	END IF;
+
+END PROCESS;
+
+end Behavioral;
+</div></code></pre>
+<h3 id="seudoc%C3%B3digo-de-funcion-calcularwatt">Seudocódigo de funcion CalcularWatt</h3>
+<table>
+<thead>
+<tr>
+<th>Entradas</th>
+<th>Salidas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lux</td>
+<td>Watt</td>
+</tr>
+<tr>
+<td>Eficiencia luminosa</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><img src="./Fotos/CW_2.png" alt="Foto"></p>
+<h2 id="cartas-asm-de-la-funci%C3%B3n-principal-y-de-funciones-intermedias">Cartas ASM de la Función Principal y de Funciones intermedias</h2>
+<h3 id="carta-asm-funcion-principal">Carta ASM Funcion Principal</h3>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    subgraph Principal
+        *((Inicio))
+        *--Datos por defecto-->DF
+
+        DF(equivalente = 0 <br/> lux = 0 <br/> efl = 0 )
+
+        DF-->CLK
+
+        CLK{{clk}}
+
+        CLK--Recibir datos-->data
+
+        data[/lux<br>columna/]
+
+        subgraph Funcion ADC, Teclado
+            CLK
+            data
+        end
+
+        data-->C
+        data-->Ref
+        data-->EfL
+
+        C{Mostrar <br> medida <br> equivalente <br> <br> eq=1}
+
+
+        C -->|Si| D[Medida en Watt]
+
+        C -->|No| E[Medida en Lux]
+
+        subgraph Funcion Calcular Watt
+        D
+        end
+
+        D --> #
+        E --> #
+
+        Ref{Cambiar referencia <br> ref=1}
+
+        Ref-->|Si| DPB
+
+        DPB[display en simbolo <br/> -]
+
+        DPB --> NRf
+        NRf[Nueva referencia]
+
+        NRf-->#
+
+        Ref-->|No| #
+
+        EfL{Eficiencia luminosa <br/> efl=1}
+
+        EfL -->|Si| F[Para <br/> luz led]
+        EfL -->|No| G[Para <br/> luz Halógena]
+
+        F-->#
+        G-->#
+
+        #((FIN))
+
+    end
+</div></code></pre>
+<h3 id="cartas-asm-funcion-adc">Cartas ASM Funcion ADC</h3>
+<pre><code class="language-mermaid"><div class="mermaid">graph TB
+    subgraph ADC
+        *((Inicio))
+        #((FIN))
+        SA[/Señal analoga/]
+        analog_signal{Señal analoga < 0}
+        CSTDL[Convesor a STD Logic]
+
+        * --Recibir dato--> SA
+        SA --> analog_signal
+        analog_signal -- Si --> SD1[Señal digital = Señal analoga * 12.8]
+        analog_signal -- No --> SD2[Señal digital = Señal analoga * 12.8]
+        SD1 --> CA1[Complemento A1]
+        SD2 --> CSTDL
+        CA1 --> CSTDL
+        CSTDL --> #
+
+    end
+</div></code></pre>
+<h3 id="cartas-asm-funcion-teclado">Cartas ASM Funcion Teclado</h3>
+<p>Diagrama para Bandera</p>
+<p><img src="./Fotos/TC_1.png" alt="Foto"></p>
+<p>Diagrama para Bandera 2</p>
+<p><img src="./Fotos/TC_2.png" alt="Foto"></p>
+<p>Diagrama para Fila.</p>
+<p><img src="./Fotos/TC_3.png" alt="Foto"></p>
+<p>Diagrama para activar fila.</p>
+<p><img src="./Fotos/TC_4.png" alt="Foto"></p>
+<p>Carta ASM activacion de filas</p>
+<p><img src="./Fotos/TC_5.png" alt="Foto"></p>
+<p>Diagrama para salida.</p>
+<p><img src="./Fotos/TC_6.png" alt="Foto"></p>
+<h3 id="cartas-asm-funcion-calcularwatt">Cartas ASM Funcion CalcularWatt</h3>
+<p><img src="./Fotos/CW_1.png" alt="Foto">
+<img src="./Fotos/CW_3.png" alt="Foto"></p>
+
+</body>
+</html>
