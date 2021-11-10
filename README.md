@@ -339,7 +339,7 @@ graph TB
 
         CLK--Recibir datos-->data
 
-        data[/lux<br>columna<br>fila/]
+        data[/lux<br>columna/]
 
         subgraph Funcion ADC, Teclado
             CLK
