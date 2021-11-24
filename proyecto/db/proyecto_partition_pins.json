@@ -1,0 +1,257 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "filas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "filas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "filas[2]",
+					"strict" : false
+				},
+				{
+					"name" : "filas[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_unidades[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_unidades[1]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_unidades[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_unidades[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_unidades[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_unidades[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_unidades[6]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_decenas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_decenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_decenas[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_decenas[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_decenas[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_decenas[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_decenas[6]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_centenas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_centenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_centenas[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_centenas[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_centenas[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_centenas[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segmentos_centenas[6]",
+					"strict" : false
+				},
+				{
+					"name" : "segm1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segm1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "segm1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segm1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segm1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segm1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segm1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "segm2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segm2[1]",
+					"strict" : false
+				},
+				{
+					"name" : "segm2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segm2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segm2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segm2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segm2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "segm3[0]",
+					"strict" : false
+				},
+				{
+					"name" : "segm3[2]",
+					"strict" : false
+				},
+				{
+					"name" : "segm3[3]",
+					"strict" : false
+				},
+				{
+					"name" : "segm3[4]",
+					"strict" : false
+				},
+				{
+					"name" : "segm3[5]",
+					"strict" : false
+				},
+				{
+					"name" : "segm3[6]",
+					"strict" : false
+				},
+				{
+					"name" : "alarma",
+					"strict" : false
+				},
+				{
+					"name" : "reloj",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[5]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[7]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[9]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[3]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[8]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SENSOR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "ntr",
+					"strict" : false
+				},
+				{
+					"name" : "col[2]",
+					"strict" : false
+				},
+				{
+					"name" : "col[0]",
+					"strict" : false
+				},
+				{
+					"name" : "col[3]",
+					"strict" : false
+				},
+				{
+					"name" : "col[1]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
